@@ -11,4 +11,29 @@
 // Use your function to create a header
 // and append it to the DOM inside the div.header-container
 
-function Header() {}
+const months = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"]
+let d = new Date()
+
+function Header() {
+    const header = document.createElement("div")
+    header.classList.add("header")
+
+    const date = document.createElement("span")
+    date.classList.add("date")
+    date.textContent = `${months[d.getMonth() - 1]} ${d.getDate()}, ${d.getFullYear()}`
+
+    const h1 = document.createElement("h1")
+    h1.textContent = "Lambda Times"
+
+    const temp = document.createElement("span")
+    temp.classList.add("temp")
+    temp.textContent = "98 \u00B0"
+
+    header.appendChild(date)
+    header.appendChild(h1)
+    header.appendChild(temp)
+
+    return header
+}
+
+document.querySelector(".header-container").appendChild(Header())
